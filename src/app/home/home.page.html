@@ -1,7 +1,54 @@
-<div class="ion-page" id="main-content">
-  <ion-header>
-    <ion-toolbar color="light-gray">
-      <ion-title>Pickup Parents</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</div>
+<ion-header>
+  <ion-toolbar color="light-gray">
+    <ion-title>Sistema para Recoger Estudiantes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding background ion-padding-top-safe-area">
+  <ion-grid fixed>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-md="10">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title class="ion-text-center ion-text-white">Estado de los Carriles</ion-card-title>
+          </ion-card-header>
+          <ion-card-content class="lane-table-container">
+            <ion-grid class="lane-grid">
+              <ion-row class="lane-header-row">
+                <ion-col class="lane-header">Carril 1</ion-col>
+                <ion-col class="lane-header">Carril 2</ion-col>
+                <ion-col class="lane-header">Carril 3</ion-col>
+              </ion-row>
+              <ion-row class="lane-content-row">
+                <ion-col class="lane-col">
+                  <div *ngIf="laneData['carril-1'].length === 0" class="empty-lane-message">
+                    <p>Vacío</p>
+                  </div>
+                  <div *ngFor="let student of laneData['carril-1']" [ngClass]="getSectionColorClass(student.seccion)" class="student-cell">
+                    {{ student.Estudiante }}
+                  </div>
+                </ion-col>
+                <ion-col class="lane-col">
+                  <div *ngIf="laneData['carril-2'].length === 0" class="empty-lane-message">
+                    <p>Vacío</p>
+                  </div>
+                  <div *ngFor="let student of laneData['carril-2']" [ngClass]="getSectionColorClass(student.seccion)" class="student-cell">
+                    {{ student.Estudiante }}
+                  </div>
+                </ion-col>
+                <ion-col class="lane-col">
+                  <div *ngIf="laneData['carril-3'].length === 0" class="empty-lane-message">
+                    <p>Vacío</p>
+                  </div>
+                  <div *ngFor="let student of laneData['carril-3']" [ngClass]="getSectionColorClass(student.seccion)" class="student-cell">
+                    {{ student.Estudiante }}
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
